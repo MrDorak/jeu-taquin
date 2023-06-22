@@ -10,11 +10,6 @@ body {
     color: white;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 #app {
     display: grid;
     place-items: center;

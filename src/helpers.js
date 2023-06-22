@@ -23,12 +23,6 @@ export function isSolved(tiles) {
     return true;
 }
 
-export function getMatrixPosition(index) {
-    return {
-        row: Math.floor(index / GRID_SIZE),
-        col: index % GRID_SIZE,
-    };
-}
 
 export function shuffle(tiles) {
     const shuffledTiles = [
@@ -41,6 +35,12 @@ export function shuffle(tiles) {
     return isSolvable(shuffledTiles) && !isSolved(shuffledTiles) ? shuffledTiles : shuffle(shuffledTiles);
 }
 
+export function getMatrixPosition(index) {
+    return {
+        row: Math.floor(index / GRID_SIZE),
+        col: index % GRID_SIZE,
+    };
+}
 export function canSwap(srcIndex, destIndex) {
     const { row: srcRow, col: srcCol } = getMatrixPosition(srcIndex);
     const { row: destRow, col: destCol } = getMatrixPosition(destIndex);

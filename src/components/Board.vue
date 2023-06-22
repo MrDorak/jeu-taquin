@@ -13,11 +13,6 @@ const TILE_COUNT = GRID_SIZE ** 2;
 
 const tiles = ref([...Array(TILE_COUNT).keys()])
 
-const style = {
-  width: `${BOARD_SIZE}px`,
-  height: `${BOARD_SIZE}px`,
-}
-
 const pieceWidth = Math.round(BOARD_SIZE / GRID_SIZE);
 const pieceHeight = Math.round(BOARD_SIZE / GRID_SIZE);
 
@@ -55,25 +50,30 @@ const handleStartClick = () => {
   shuffleTiles()
   isStarted.value = true
 }
-
-
 </script>
 
 <template>
-  <ul :style="style" class="board">
-    <Tile
-        v-for="(tile, idx) in tiles"
-        :key="idx"
-        :index="idx"
-        :tile="tile"
-        :width="pieceWidth"
-        :height="pieceHeight"
-        :isLast="tile !== TILE_COUNT - 1"
-        :imgUrl="imgUrl"
-        :handleTileClick="handleTileClick"
-        :numberHint="numberHint"
-    ></Tile>
-  </ul>
+  <div  style="border: 1px solid #3d3d3d; border-radius: .5rem; padding: 1rem; background: #212121;">
+
+    <div :style="{
+    width: `${BOARD_SIZE}px`,
+    height: `${BOARD_SIZE}px`,
+  }" class="board">
+      <Tile
+          v-for="(tile, idx) in tiles"
+          :key="idx"
+          :index="idx"
+          :tile="tile"
+          :width="pieceWidth"
+          :height="pieceHeight"
+          :isLast="tile !== TILE_COUNT - 1"
+          :imgUrl="imgUrl"
+          :handleTileClick="handleTileClick"
+          :numberHint="numberHint"
+      ></Tile>
+    </div>
+
+  </div>
   <div v-if="hasWon && isStarted">
     Vous avez gagné !
   </div>

@@ -20,12 +20,12 @@ const visualPos = {
 </script>
 
 <template>
-  <li
+  <div
       :style="{
         width: `calc(100% / ${GRID_SIZE})`,
         height: `calc(100% / ${GRID_SIZE})`,
         'background-size': `${BOARD_SIZE}px`,
-        'opacity': +isLast,
+        'opacity': +isLast, // convert to int ; 1 if true, 0 if false
         'transform': `translate3d(${visualPos.x}px, ${visualPos.y}px, 0)`,
         'background-image' : `url(${props.imgUrl})`,
         'background-position' : `${(100 / (GRID_SIZE - 1)) * (props.tile % GRID_SIZE)}% ${(100 / (GRID_SIZE - 1)) * (Math.floor(props.tile / GRID_SIZE))}%`
@@ -34,6 +34,6 @@ const visualPos = {
       @click="handleTileClick(index)"
   >
     <span v-if="!imgUrl || numberHint">{{ tile + 1 }}</span>
-  </li>
+  </div>
 </template>
 

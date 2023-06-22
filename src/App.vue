@@ -17,12 +17,21 @@ const handleImageChange = (e: any) => {
   imgUrl.value = e.target.value
   window.history.replaceState("", "", updateURLParameter(window.location.href, "img", e.target.value))
 }
+
+const onImageFileChange = (e: any) => {
+  const file = e.target.files[0];
+  imgUrl.value = URL.createObjectURL(file)
+}
 </script>
 
 <template>
-  <Board :imgUrl="imgUrl" />
-  <div>
-    Paste the link to an image here :
-    <input :value="imgUrl" @change="handleImageChange" />
+  <div style="width: 1500px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem;">
+    <Board :imgUrl="imgUrl" />
+    <div style="display: flex; flex-direction: column; width: 50%; gap: 1rem; border: 1px solid #aaaaaa; border-radius: .5rem; padding: 1rem; background: #3d3d3d;">
+      Paste the link to an image :
+      <input :value="imgUrl" @change="handleImageChange" />
+      Or upload your own image :
+      <input type="file" @change="onImageFileChange" />
+    </div>
   </div>
 </template>
