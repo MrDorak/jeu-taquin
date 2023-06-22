@@ -25,9 +25,9 @@ const onImageFileChange = (e: any) => {
 </script>
 
 <template>
-  <div style="width: 1500px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem;">
+  <div style="max-width: 1500px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 3rem;">
     <Board :imgUrl="imgUrl" />
-    <div style="display: flex; flex-direction: column; width: 50%; gap: 1rem; border: 1px solid #aaaaaa; border-radius: .5rem; padding: 1rem; background: #3d3d3d;">
+    <div style="display: flex; flex-direction: column; width: 100%; gap: 1rem; border: 1px solid #aaaaaa; border-radius: .5rem; padding: 1rem; background: #3d3d3d;">
       Paste the link to an image :
       <input :value="imgUrl" @change="handleImageChange" />
       Or upload your own image :
