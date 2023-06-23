@@ -53,12 +53,9 @@ const handleStartClick = () => {
 </script>
 
 <template>
-  <div  style="border: 1px solid #3d3d3d; border-radius: .5rem; padding: 1rem; background: #212121;">
+  <div style="border: 1px solid #3d3d3d; border-radius: .5rem; padding: 1rem; background: #212121; display: flex; gap: 3rem">
 
-    <div :style="{
-    width: `${BOARD_SIZE}px`,
-    height: `${BOARD_SIZE}px`,
-  }" class="board">
+    <div :style="{ width: `${BOARD_SIZE}px`, height: `${BOARD_SIZE}px`, }" class="board">
       <Tile
           v-for="(tile, idx) in tiles"
           :key="idx"
@@ -73,7 +70,9 @@ const handleStartClick = () => {
       ></Tile>
     </div>
 
+    <img :style="{ width: `${BOARD_SIZE}px`, height: `${BOARD_SIZE}px`, }" :src="imgUrl" alt="">
   </div>
+
   <div v-if="hasWon && isStarted">
     Vous avez gagné !
   </div>
